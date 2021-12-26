@@ -1,3 +1,4 @@
+#include <array>
 template <typename enum_type, int n, enum_type empty_item>
 class envanter {
 private:
@@ -10,7 +11,7 @@ public:
         enum_type item;
         int count;
     } operator[](int index) { return {data[index].first(), data[index].seconds()}; };
-    int Add(enum_type item) {
+    int Push(enum_type item) {
         auto f = find_if(data.begin(), data.end(), [&](const item_t& i) -> bool { return i.first == item; });
         if (f != data.end()) {
             f->second++;
@@ -25,4 +26,15 @@ public:
         };
         return -1;
     };
+    bool Pop(int index) {
+        if (data[index].second != 0) {
+            data[index].second--;
+            if (data[index].second == 0)
+                data[index].first = empty_item;
+            return true;
+        }
+        return false;
+    };
+    void Swap(int index1, int index2) { std::swap(data[index1], data[index2]); };
+    void Remove(int index) { data[index] = make_pair(empty_item,0); };
 };
