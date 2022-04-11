@@ -24,6 +24,7 @@ auto main() -> int {
 };
 ```
 #### Output:
+```
 Elma: 7.
 None: 0.
 Cilek: 12.
@@ -34,3 +35,4 @@ None: 0.
 Armut: 5.
 None: 0.
 None: 0.
+```
